@@ -1,20 +1,18 @@
 package com.mao.mp3.main;
 
 import javax.sound.sampled.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 public class TestDriver {
     public static void main(String[] args) throws Exception {
         //获取音乐对象
+
         File file=new File("C:\\Users\\LENOVO\\Music","多余的温柔.mp3");
         //得到音频格式
         //AudioFileFormat fileFormat = AudioSystem.getAudioFileFormat(file);
 
         //把file文件转化为输入流
-        InputStream is =new FileInputStream(file);
+        FileInputStream is =new FileInputStream(file);
         //获取音频输入流
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(is);
         //获取音频文件格式-mp3格式

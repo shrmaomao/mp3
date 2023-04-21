@@ -1,6 +1,7 @@
 package com.mao.mp3.ui;
 
 import com.mao.mp3.service.PlayService;
+import com.mao.mp3.service.PlayThread;
 import com.mao.mp3.service.event.MouseListener;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -86,15 +87,10 @@ public class Windows extends JFrame {
     }
 
     public void clickPlay() {
-        PlayService ps= new PlayService();
-        try {
-            ps.play(mp3path);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        }
+        PlayService ps= new PlayService(mp3path);
+        Thread playThread = new PlayThread(ps);
+        //启动线程
+        playThread.start();
+
     }
 }

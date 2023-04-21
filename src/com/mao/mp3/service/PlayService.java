@@ -4,7 +4,15 @@ import javax.sound.sampled.*;
 import java.io.*;
 
 public class PlayService {
-    public  void play(String path) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+    private String path;
+    //true为播放，false为无播放
+    private Boolean playFlag;
+
+    public PlayService(String path) {
+        this.path = path;
+    }
+
+    public  void play() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         //获取音乐对象
 
         File file=new File(path);
@@ -46,5 +54,14 @@ public class PlayService {
         line.drain();
         line.stop();
         line.close();
+
+        //点击播放按钮后变为false，否则为true
+        if(playFlag){
+            playFlag=false;
+        }else {
+            playFlag=true;
+        }
+
+
     }
 }
